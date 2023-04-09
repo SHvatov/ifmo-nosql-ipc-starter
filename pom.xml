@@ -12,7 +12,7 @@
 
     <groupId>com.shvatov</groupId>
     <artifactId>redis-ipc-starter</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>redis-ipc-starter</name>
 
     <properties>
@@ -118,7 +118,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/octocat/hello-world</url>
+            <url>https://maven.pkg.github.com/shvatov/ifmo-nosql-ipc-starter</url>
         </repository>
     </distributionManagement>
 
