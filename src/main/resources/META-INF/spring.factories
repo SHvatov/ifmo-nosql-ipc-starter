@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.shvatov.redis.ipc.config.RedisIPCAutoConfiguration

@@ -1,0 +1,39 @@
+version: "3.9"
+
+networks:
+  monitoring:
+    driver: bridge
+
+services:
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - monitoring
+
+  redis-commander-publisher:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=redis
+    ports:
+      - "8082:8081"
+    depends_on:
+      - redis
+    links:
+      - redis
+    networks:
+      - monitoring
+
+  redis-commander-listener:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=redis
+    ports:
+      - "8083:8081"
+    depends_on:
+      - redis
+    links:
+      - redis
+    networks:
+      - monitoring
