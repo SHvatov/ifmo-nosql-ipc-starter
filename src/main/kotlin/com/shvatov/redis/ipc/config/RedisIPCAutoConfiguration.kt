@@ -36,7 +36,7 @@ import reactor.core.scheduler.Schedulers
     ]
 )
 @AutoConfiguration(after = [RedisReactiveAutoConfiguration::class])
-internal class RedisIPCAutoConfiguration {
+class RedisIPCAutoConfiguration {
 
     @Configuration("redis.ipc.common-configuration")
     @Import(RedisTopicsBeanDefinitionRegistrar::class)
