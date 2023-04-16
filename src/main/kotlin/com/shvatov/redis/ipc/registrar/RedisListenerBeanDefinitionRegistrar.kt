@@ -110,13 +110,18 @@ internal class RedisListenerBeanDefinitionRegistrar(
         }
 
         if (bufferSize > 0) {
-            val payloadHolderClass = listenerMethod.parameters
-                .first { it.isAnnotationPresent(Payload::class.java) }
-                .type
-            if (!payloadHolderClass.isAssignableFrom(List::class.java)) {
+            if (!payloadClass.isAssignableFrom(List::class.java)) {
                 throw BeanInitializationException(
                     "Type of the parameter annotated with " +
                             "@Payload must be List if buffering is enabled"
+                )
+            }
+        } else {
+            if (payloadClass.isAssignableFrom(Collection::class.java)) {
+                throw BeanInitializationException(
+                    "Type of the parameter annotated with " +
+                            "@Payload must differ from Collection descendants " +
+                            "if buffering is disabled"
                 )
             }
         }
